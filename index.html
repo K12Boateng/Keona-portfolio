@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keona - Young Robotics Prodigy & Designer</title>
+  <meta name="description" content="Keona — a young prodigy who builds playful robots and joyful designs." />
+
+  <!-- Classic font: Lexend -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1724;
+      --muted:#cbd5e1;
+      --accent1:#00d4ff;
+      --accent2:#7c3aed;
+      --accent: linear-gradient(135deg,var(--accent2),var(--accent1));
+      --glass:rgba(255,255,255,0.03);
+      --radius:14px;
+      --max-width:1200px;
+      --card-gap:18px;
+    }
+
+    [data-theme="light"]{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --muted:#0f1724;
+      --glass:rgba(2,6,23,0.04);
+      --accent: linear-gradient(135deg,#7c3aed,#06b6d4);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Lexend', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(900px 400px at 8% 8%, rgba(124,58,237,0.06), transparent), var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      display:flex;justify-content:center;padding:36px 18px;
+    }
+
+    .container{width:100%;max-width:var(--max-width)}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:64px;height:64px;border-radius:14px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;box-shadow:0 12px 40px rgba(2,6,23,0.45)}
+    .title{font-size:20px;font-weight:800;color:var(--muted)}
+    .subtitle{font-size:13px;color:var(--muted);opacity:0.9}
+
+    .controls{display:flex;align-items:center;gap:10px}
+    .kid-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);border:1px solid var(--glass);font-weight:700}
+    .btn{background:transparent;border:0;color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;transition:all .18s}
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:var(--radius);margin-bottom:22px;border:1px solid var(--glass)}
+    .hero-left{max-width:64%}
+    .hero h1{font-size:30px;margin-bottom:8px;color:var(--muted);line-height:1.15}
+    .hero p{margin:0;color:var(--muted);opacity:0.95;font-size:15px}
+    .hero-cta{display:flex;gap:12px;margin-top:16px}
+
+    .primary{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(2,6,23,0.35)}
+    .secondary{background:transparent;border:1px solid var(--glass);padding:10px 14px;border-radius:10px;cursor:pointer}
+
+    .section-title{font-size:16px;color:var(--muted);margin:8px 0 14px;font-weight:800}
+
+    /* grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--card-gap)}
+
+    /* card + reveal animation */
+    .card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--glass);box-shadow:0 12px 36px rgba(2,6,23,0.35);display:flex;flex-direction:column;transform:translateY(18px);opacity:0;transition:transform .48s cubic-bezier(.2,.9,.2,1),opacity .48s}
+    .card.reveal{transform:none;opacity:1}
+
+    /* image frame: consistent aspect and beautiful crop */
+    .img-frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(180deg, rgba(124,58,237,0.08), rgba(0,212,255,0.04));display:block}
+    .img-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .img-frame:hover img{transform:scale(1.06)}
+
+    /* overlay on hover */
+    .overlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+    .overlay .cta{pointer-events:auto;opacity:0;transform:translateY(8px);transition:all .28s ease}
+    .img-frame:hover .overlay .cta{opacity:1;transform:none}
+    .view-btn{background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.06);color:white;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    .card-body{padding:14px}
+    .card h3{margin:0;font-size:17px;color:var(--muted);font-weight:800}
+    .card p{margin:8px 0 0;font-size:14px;color:var(--muted);opacity:0.95}
+    .meta-row{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .pill{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid var(--glass);font-weight:700}
+
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;padding-top:20px;border-top:1px solid var(--glass)}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.75);display:none;align-items:center;justify-content:center;padding:18px;z-index:120}
+    .modal{background:var(--card);border-radius:12px;max-width:960px;width:100%;overflow:hidden;position:relative}
+    .modal .content{display:grid;grid-template-columns:1fr 380px;gap:0}
+    .modal .media{background:#000;display:grid;place-items:center}
+    .modal img{width:100%;height:100%;object-fit:cover;display:block}
+    .modal .meta{padding:22px}
+    .modal h3{margin:0 0 8px;color:var(--muted)}
+    .tech-list{font-size:13px;color:var(--muted);opacity:0.95;margin-top:12px}
+    .modal .actions{margin-top:18px;display:flex;gap:8px}
+    .close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);padding:8px;border-radius:8px;cursor:pointer;font-size:22px}
+
+    @media (max-width:880px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero-left{max-width:100%}
+      .hero-right img{width:200px}
+      .modal .content{grid-template-columns:1fr}
+    }
+
+    :focus{outline:3px solid rgba(124,58,237,0.14);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo">KΔ</div>
+        <div>
+          <div class="title">Keona</div>
+          <div class="subtitle">Young Robotics Prodigy • Creative Designer</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="kid-badge" aria-hidden="true">K‑Tech Lab</div>
+        <button id="themeBtn" class="btn" title="Toggle theme">Theme</button>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="intro">
+        <div class="hero-left">
+          <h1 id="intro">Hi I'm Keona.<br><strong style="color:var(--accent2)">Young prodigy</strong> building playful robots and joyful designs.</h1>
+          <p>I bridge circuits and color: tiny rovers that chase sunlight, jackets that glow when you dance, and storybooks that move when you turn the page. I prototype toys, wearables, and interfaces that make learning feel like play.</p>
+          <div class="hero-cta">
+            <button class="primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+            <button class="secondary" onclick="downloadCatalog()">Download Catalog</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="imgs/smiling-girl-with-graduation-cap-cartoon-style1.png" alt="Keona portrait" style="width:240px;border-radius:50%;box-shadow:0 12px 40px rgba(2,6,23,0.35);">
+        </div>
+      </section>
+
+      <section id="projects" style="margin-top:22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div>
+            <div class="section-title">Robots & Designs</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:6px">A playful selection of projects that mix robotics, wearables, and creative UX for kids.</div>
+          </div>
+          <div>
+            <label style="font-size:13px;color:var(--muted);margin-right:8px">Filter:</label>
+            <select id="filter" onchange="applyFilter(this.value)" style="padding:8px;border-radius:10px;border:1px solid var(--glass);background:var(--card)">
+              <option value="all">All</option>
+              <option value="robotics">Robotics</option>
+              <option value="design">Design</option>
+              <option value="wearable">Wearable</option>
+              <option value="art">Creative Art</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid" style="margin-top:16px"></div>
+      </section>
+
+      <footer id="contact">
+        Built with curiosity • <span id="year"></span> • <a href="mailto:keona@ghana.com">keona@ghana.com</a>
+      </footer>
+    </main>
+
+    <!-- Modal for preview -->
+    <div class="modal-backdrop" id="modal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-label="Project preview">
+        <button class="close" aria-label="Close" onclick="closeModal()">✕</button>
+        <div class="content">
+          <div class="media" id="modalMedia"></div>
+          <div class="meta">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+            <div class="tech-list" id="modalTech"></div>
+            <div class="actions">
+              <a id="modalDemo" class="primary" href="#" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">View Demo</a>
+              <button class="secondary" onclick="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const projects = [
+      { id:1, title:'Robo‑Pal', desc:'A tiny companion robot that reacts to hugs and plays simple games. Built with micro:bit, servo motors, and a child-friendly dashboard app.', img:'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000', tech:['micro:bit','Arduino','Servo','MakeCode','Figma'], tags:['robotics','design'], demo:'#' },
+      { id:2, title:'PaperBot', desc:'An origami-inspired robot that folds and unfolds to perform motions - a playful bridge between craft and engineering.', img:'https://images.unsplash.com/photo-1526413232644-8a40f3b2c1b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3', tech:['3D-printed parts','Micro servo','Sketching','Figma'], tags:['robotics','design','art'], demo:'#' },
+      { id:3, title:'SunChaser Rover', desc:'A solar-seeking rover that tracks bright objects and navigates small obstacles built for backyard exploration.', img:'https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000', tech:['Raspberry Pi','Camera','Python','OpenCV'], tags:['robotics','art'], demo:'#' },
+      { id:4, title:'Glow Jacket', desc:'A playful LED jacket with patterns that change when you dance. Teaches basic circuitry and visual design.', img:'https://images.unsplash.com/photo-1516707570268-73b7a9b66f6b?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000', tech:['Arduino','Neopixels','Design Patterns'], tags:['wearable','design'], demo:'#' },
+      { id:5, title:'StoryBot', desc:'A storybook augmented by a small puppet-robot that acts out scenes as you turn pages. Focused on accessible interaction for kids.', img:'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000', tech:['Bluetooth','TinyML','Illustration','Figma'], tags:['design','robotics','art'], demo:'#' },
+      { id:6, title:'Robot Art Studio', desc:'A drawing robot that creates abstract art based on music input merging sound, movement and color.', img:'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000', tech:['Arduino','Motors','Generative Algorithms','Processing'], tags:['art','robotics'], demo:'#' }
+    ];
+
+    const grid = document.getElementById('projectsGrid');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTech = document.getElementById('modalTech');
+    const modalDemo = document.getElementById('modalDemo');
+    const modalMedia = document.getElementById('modalMedia');
+
+    function placeholderSVG(title){
+      const svg = `\n        <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="875" viewBox="0 0 1400 875">\n          <defs>\n            <linearGradient id="g" x1="0" x2="1">\n              <stop offset="0%" stop-color="#7c3aed"/>\n              <stop offset="100%" stop-color="#00d4ff"/>\n            </linearGradient>\n          </defs>\n          <rect width="100%" height="100%" fill="url(#g)"/>\n          <text x="70" y="460" font-family="Lexend, Inter, Arial" font-size="48" fill="rgba(255,255,255,0.95)">${escapeHtml(title)}</text>\n        </svg>\n      `;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[s]));
+    }
+
+    function createCard(p){
+      const article = document.createElement('article');
+      article.className = 'card';
+
+      // image frame
+      const frame = document.createElement('div'); frame.className = 'img-frame';
+      const img = document.createElement('img');
+      img.src = p.img; img.alt = p.title; img.loading = 'lazy';
+      img.addEventListener('error', ()=>{ img.src = placeholderSVG(p.title); });
+      frame.appendChild(img);
+
+      // overlay with view CTA
+      const overlay = document.createElement('div'); overlay.className = 'overlay';
+      const btnWrap = document.createElement('div'); btnWrap.className = 'cta';
+      const viewBtn = document.createElement('button'); viewBtn.className = 'view-btn'; viewBtn.textContent = 'View';
+      viewBtn.addEventListener('click', ()=> openModal(p.id));
+      btnWrap.appendChild(viewBtn); overlay.appendChild(btnWrap); frame.appendChild(overlay);
+
+      // body
+      const body = document.createElement('div'); body.className = 'card-body';
+      const h3 = document.createElement('h3'); h3.textContent = p.title;
+      const pDesc = document.createElement('p'); pDesc.textContent = p.desc;
+      const meta = document.createElement('div'); meta.className = 'meta-row';
+      const tagPill = document.createElement('div'); tagPill.className = 'pill'; tagPill.textContent = p.tags[0];
+      const techWrap = document.createElement('div'); techWrap.style.display='flex'; techWrap.style.gap='8px';
+      p.tech.slice(0,2).forEach(t=>{ const s=document.createElement('span'); s.className='pill'; s.style.fontSize='11px'; s.textContent=t; techWrap.appendChild(s); });
+      meta.appendChild(tagPill); meta.appendChild(techWrap);
+
+      body.appendChild(h3); body.appendChild(pDesc); body.appendChild(meta);
+
+      article.appendChild(frame); article.appendChild(body);
+
+      // click on image also opens modal
+      img.addEventListener('click', ()=> openModal(p.id));
+
+      return article;
+    }
+
+    function renderProjects(list){
+      grid.innerHTML = '';
+      list.forEach(p=>{
+        grid.appendChild(createCard(p));
+      });
+      observeReveal();
+    }
+
+    function openModal(id){
+      const p = projects.find(x=>x.id===id); if(!p) return;
+      modalTitle.textContent = p.title; modalDesc.textContent = p.desc; modalTech.textContent = 'Tech: ' + p.tech.join(', ');
+      modalDemo.style.display = (p.demo && p.demo !== '#') ? 'inline-block' : 'none';
+      if(p.demo && p.demo !== '#'){ modalDemo.href = p.demo; } else { modalDemo.removeAttribute('href'); }
+
+      // media
+      modalMedia.innerHTML = ''; const img = document.createElement('img'); img.src = p.img; img.alt = p.title; img.addEventListener('error', ()=>{ img.src = placeholderSVG(p.title); });
+      modalMedia.appendChild(img);
+
+      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+      modal.querySelector('.close').focus();
+    }
+
+    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); modalMedia.innerHTML=''; document.body.style.overflow=''; }
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    function applyFilter(tag){ if(tag==='all') renderProjects(projects); else renderProjects(projects.filter(p=>p.tags.includes(tag))); }
+
+    // Theme toggle with persistence
+    const themeBtn = document.getElementById('themeBtn'); const saved = localStorage.getItem('site-theme'); if(saved) document.documentElement.setAttribute('data-theme', saved);
+    function toggleTheme(){ const current = document.documentElement.getAttribute('data-theme'); const next = current === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', next); localStorage.setItem('site-theme', next); }
+    if(!document.documentElement.getAttribute('data-theme')){ const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches; document.documentElement.setAttribute('data-theme', prefersLight ? 'light' : 'dark'); }
+    themeBtn.addEventListener('click', toggleTheme);
+
+    function downloadCatalog(){ window.open('mailto:keona@ghana.com?subject=Catalog%20Request','_self'); }
+
+    // Reveal animation using IntersectionObserver
+    function observeReveal(){ const cards = document.querySelectorAll('.card'); const io = new IntersectionObserver((entries, obs)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('reveal'); obs.unobserve(entry.target); } }); },{threshold:0.12}); cards.forEach(c=> io.observe(c)); }
+
+    // init
+    renderProjects(projects); document.getElementById('year').textContent = new Date().getFullYear();
+
+    // expose for debugging
+    window.applyFilter = applyFilter; window.openModal = openModal; window.closeModal = closeModal;
+  </script>
+</body>
+</html>
