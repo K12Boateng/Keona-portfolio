@@ -38,76 +38,96 @@
       background: radial-gradient(900px 400px at 8% 8%, rgba(124,58,237,0.06), transparent), var(--bg);
       color:var(--muted);
       -webkit-font-smoothing:antialiased;
-      display:flex;justify-content:center;padding:36px 18px;
+      display:flex;justify-content:center;padding:28px 14px;
     }
 
     .container{width:100%;max-width:var(--max-width)}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:64px;height:64px;border-radius:14px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;box-shadow:0 12px 40px rgba(2,6,23,0.45)}
-    .title{font-size:20px;font-weight:800;color:var(--muted)}
+    .logo{width:56px;height:56px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:0 10px 30px rgba(2,6,23,0.45)}
+    .title{font-size:18px;font-weight:800;color:var(--muted)}
     .subtitle{font-size:13px;color:var(--muted);opacity:0.9}
 
-    .controls{display:flex;align-items:center;gap:10px}
+    .controls{display:flex;align-items:center;gap:8px}
     .kid-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);border:1px solid var(--glass);font-weight:700}
-    .btn{background:transparent;border:0;color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;transition:all .18s}
-    .btn:hover{transform:translateY(-2px)}
+    .btn{background:transparent;border:0;color:var(--muted);padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;transition:all .15s}
+    .btn:active{transform:translateY(1px)}
 
-    .hero{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:var(--radius);margin-bottom:22px;border:1px solid var(--glass)}
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:20px;border-radius:var(--radius);margin-bottom:18px;border:1px solid var(--glass)}
     .hero-left{max-width:64%}
-    .hero h1{font-size:30px;margin-bottom:8px;color:var(--muted);line-height:1.15}
-    .hero p{margin:0;color:var(--muted);opacity:0.95;font-size:15px}
-    .hero-cta{display:flex;gap:12px;margin-top:16px}
+    .hero h1{font-size:26px;margin-bottom:6px;color:var(--muted);line-height:1.15}
+    .hero p{margin:0;color:var(--muted);opacity:0.95;font-size:14px}
+    .hero-cta{display:flex;gap:10px;margin-top:14px}
 
-    .primary{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(2,6,23,0.35)}
-    .secondary{background:transparent;border:1px solid var(--glass);padding:10px 14px;border-radius:10px;cursor:pointer}
+    .primary{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(2,6,23,0.28)}
+    .secondary{background:transparent;border:1px solid var(--glass);padding:10px 12px;border-radius:10px;cursor:pointer}
 
-    .section-title{font-size:16px;color:var(--muted);margin:8px 0 14px;font-weight:800}
+    .section-title{font-size:16px;color:var(--muted);margin:6px 0 12px;font-weight:800}
 
     /* grid */
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--card-gap)}
 
     /* card + reveal animation */
-    .card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--glass);box-shadow:0 12px 36px rgba(2,6,23,0.35);display:flex;flex-direction:column;transform:translateY(18px);opacity:0;transition:transform .48s cubic-bezier(.2,.9,.2,1),opacity .48s}
+    .card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.32);display:flex;flex-direction:column;transform:translateY(18px);opacity:0;transition:transform .44s cubic-bezier(.2,.9,.2,1),opacity .44s}
     .card.reveal{transform:none;opacity:1}
 
     /* image frame: consistent aspect and beautiful crop */
-    .img-frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(180deg, rgba(124,58,237,0.08), rgba(0,212,255,0.04));display:block}
+    .img-frame{position:relative;width:100%;aspect-ratio:16/12;overflow:hidden;background:linear-gradient(180deg, rgba(124,58,237,0.08), rgba(0,212,255,0.04));display:block;cursor:pointer}
     .img-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
-    .img-frame:hover img{transform:scale(1.06)}
+    .img-frame:hover img{transform:scale(1.04)}
 
     /* overlay on hover */
     .overlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-    .overlay .cta{pointer-events:auto;opacity:0;transform:translateY(8px);transition:all .28s ease}
+    .overlay .cta{pointer-events:auto;opacity:0;transform:translateY(8px);transition:all .22s ease}
     .img-frame:hover .overlay .cta{opacity:1;transform:none}
     .view-btn{background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.06);color:white;padding:10px 14px;border-radius:10px;font-weight:700}
 
     .card-body{padding:14px}
-    .card h3{margin:0;font-size:17px;color:var(--muted);font-weight:800}
+    .card h3{margin:0;font-size:16px;color:var(--muted);font-weight:800}
     .card p{margin:8px 0 0;font-size:14px;color:var(--muted);opacity:0.95}
     .meta-row{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
     .pill{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid var(--glass);font-weight:700}
 
-    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;padding-top:20px;border-top:1px solid var(--glass)}
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center;padding-top:18px;border-top:1px solid var(--glass)}
 
     /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.75);display:none;align-items:center;justify-content:center;padding:18px;z-index:120}
-    .modal{background:var(--card);border-radius:12px;max-width:960px;width:100%;overflow:hidden;position:relative}
-    .modal .content{display:grid;grid-template-columns:1fr 380px;gap:0}
-    .modal .media{background:#000;display:grid;place-items:center}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.75);opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;padding:18px;z-index:120;transition:opacity .22s ease}
+    .modal-backdrop.open{opacity:1;pointer-events:auto}
+    .modal{background:var(--card);border-radius:14px;max-width:920px;width:100%;overflow:hidden;position:relative;transform:translateY(10px) scale(.995);transition:transform .28s ease,opacity .22s ease;max-height:90vh;display:flex}
+    .modal.open{transform:none}
+    .modal .content{display:grid;grid-template-columns:1fr 360px;gap:0;width:100%}
+    .modal .media{background:#000;display:grid;place-items:center;min-height:320px}
     .modal img{width:100%;height:100%;object-fit:cover;display:block}
-    .modal .meta{padding:22px}
+    .modal .meta{padding:22px;overflow:auto}
     .modal h3{margin:0 0 8px;color:var(--muted)}
     .tech-list{font-size:13px;color:var(--muted);opacity:0.95;margin-top:12px}
-    .modal .actions{margin-top:18px;display:flex;gap:8px}
-    .close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);padding:8px;border-radius:8px;cursor:pointer;font-size:22px}
+    .modal .actions{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+    .close{position:absolute;right:14px;top:12px;background:transparent;border:0;color:var(--muted);padding:10px;border-radius:10px;cursor:pointer;font-size:20px}
 
+    /* mobile / small screens */
     @media (max-width:880px){
       .hero{flex-direction:column;align-items:flex-start}
       .hero-left{max-width:100%}
-      .hero-right img{width:200px}
+      .hero-right img{width:180px}
       .modal .content{grid-template-columns:1fr}
+      .modal .media{min-height:220px}
+    }
+
+    @media (max-width:600px){
+      body{padding:20px 12px}
+      .projects-grid{grid-template-columns:1fr;gap:14px}
+      .img-frame{aspect-ratio:1/1} /* square images on mobile for cleaner layout */
+
+      /* make overlay CTA visible on touch devices */
+      .overlay .cta{opacity:1;transform:none}
+      .view-btn{padding:12px 16px;font-size:16px}
+
+      /* modal becomes full-screen-ish */
+      .modal{border-radius:12px;max-width:96vw;max-height:94vh;flex-direction:column}
+      .modal .media{min-height:46vh}
+      .modal .meta{padding:16px;max-height:calc(94vh - 46vh);overflow:auto}
+      .close{right:12px;top:10px;padding:12px}
     }
 
     :focus{outline:3px solid rgba(124,58,237,0.14);outline-offset:3px}
@@ -135,7 +155,7 @@
     <main>
       <section class="hero" aria-labelledby="intro">
         <div class="hero-left">
-          <h1 id="intro">Hi I'm Keona.<br><strong style="color:var(--accent2)">Young prodigy</strong> building playful robots and joyful designs.</h1>
+          <h1 id="intro">Hi — I'm Keona.<br><strong style="color:var(--accent2)">Young prodigy</strong> building playful robots and joyful designs.</h1>
           <p>I bridge circuits and color: tiny rovers that chase sunlight, jackets that glow when you dance, and storybooks that move when you turn the page. I prototype toys, wearables, and interfaces that make learning feel like play.</p>
           <div class="hero-cta">
             <button class="primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
@@ -143,11 +163,11 @@
           </div>
         </div>
         <div class="hero-right">
-          <img src="imgs/smiling-girl-with-graduation-cap-cartoon-style1.png" alt="Keona portrait" style="width:240px;border-radius:50%;box-shadow:0 12px 40px rgba(2,6,23,0.35);">
+          <img id="profileImg" src="imgs/smiling-girl-with-graduation-cap-cartoon-style1.png" alt="Keona portrait" style="width:160px;height:160px;border-radius:50%;object-fit:cover;box-shadow:0 10px 30px rgba(2,6,23,0.35);">
         </div>
       </section>
 
-      <section id="projects" style="margin-top:22px">
+      <section id="projects" style="margin-top:18px">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
           <div>
             <div class="section-title">Robots & Designs</div>
@@ -165,7 +185,7 @@
           </div>
         </div>
 
-        <div class="projects-grid" id="projectsGrid" style="margin-top:16px"></div>
+        <div class="projects-grid" id="projectsGrid" style="margin-top:14px"></div>
       </section>
 
       <footer id="contact">
@@ -205,12 +225,15 @@
     ];
 
     const grid = document.getElementById('projectsGrid');
-    const modal = document.getElementById('modal');
+    const modalBackdrop = document.getElementById('modal');
+    const modalDialog = modalBackdrop.querySelector('.modal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
     const modalTech = document.getElementById('modalTech');
     const modalDemo = document.getElementById('modalDemo');
     const modalMedia = document.getElementById('modalMedia');
+
+    let lastFocusedElement = null;
 
     function placeholderSVG(title){
       const svg = `\n        <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="875" viewBox="0 0 1400 875">\n          <defs>\n            <linearGradient id="g" x1="0" x2="1">\n              <stop offset="0%" stop-color="#7c3aed"/>\n              <stop offset="100%" stop-color="#00d4ff"/>\n            </linearGradient>\n          </defs>\n          <rect width="100%" height="100%" fill="url(#g)"/>\n          <text x="70" y="460" font-family="Lexend, Inter, Arial" font-size="48" fill="rgba(255,255,255,0.95)">${escapeHtml(title)}</text>\n        </svg>\n      `;
@@ -218,7 +241,7 @@
     }
 
     function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[s]));
+      return String(str).replace(/[&<>\"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;','\'':'&#39;' }[s]));
     }
 
     function createCard(p){
@@ -236,7 +259,7 @@
       const overlay = document.createElement('div'); overlay.className = 'overlay';
       const btnWrap = document.createElement('div'); btnWrap.className = 'cta';
       const viewBtn = document.createElement('button'); viewBtn.className = 'view-btn'; viewBtn.textContent = 'View';
-      viewBtn.addEventListener('click', ()=> openModal(p.id));
+      viewBtn.addEventListener('click', (e)=>{ e.stopPropagation(); openModal(p.id); });
       btnWrap.appendChild(viewBtn); overlay.appendChild(btnWrap); frame.appendChild(overlay);
 
       // body
@@ -253,8 +276,8 @@
 
       article.appendChild(frame); article.appendChild(body);
 
-      // click on image also opens modal
-      img.addEventListener('click', ()=> openModal(p.id));
+      // click on frame -> open modal (works for tap)
+      frame.addEventListener('click', ()=> openModal(p.id));
 
       return article;
     }
@@ -269,7 +292,11 @@
 
     function openModal(id){
       const p = projects.find(x=>x.id===id); if(!p) return;
-      modalTitle.textContent = p.title; modalDesc.textContent = p.desc; modalTech.textContent = 'Tech: ' + p.tech.join(', ');
+      lastFocusedElement = document.activeElement;
+
+      modalTitle.textContent = p.title;
+      modalDesc.textContent = p.desc;
+      modalTech.textContent = 'Tech: ' + p.tech.join(', ');
       modalDemo.style.display = (p.demo && p.demo !== '#') ? 'inline-block' : 'none';
       if(p.demo && p.demo !== '#'){ modalDemo.href = p.demo; } else { modalDemo.removeAttribute('href'); }
 
@@ -277,13 +304,29 @@
       modalMedia.innerHTML = ''; const img = document.createElement('img'); img.src = p.img; img.alt = p.title; img.addEventListener('error', ()=>{ img.src = placeholderSVG(p.title); });
       modalMedia.appendChild(img);
 
-      modal.style.display = 'flex'; modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
-      modal.querySelector('.close').focus();
+      // show modal with classes for smooth transitions
+      modalBackdrop.classList.add('open');
+      modalDialog.classList.add('open');
+      modalBackdrop.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+
+      // focus management
+      const closeBtn = modalDialog.querySelector('.close'); if(closeBtn) closeBtn.focus();
     }
 
-    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); modalMedia.innerHTML=''; document.body.style.overflow=''; }
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+    function closeModal(){
+      modalBackdrop.classList.remove('open');
+      modalDialog.classList.remove('open');
+      modalBackdrop.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      modalMedia.innerHTML = '';
+      // restore focus
+      try{ if(lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus(); }catch(e){}
+    }
+
+    // close on backdrop click or Escape
+    modalBackdrop.addEventListener('click',(e)=>{ if(e.target===modalBackdrop) closeModal(); });
+    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModal(); });
 
     function applyFilter(tag){ if(tag==='all') renderProjects(projects); else renderProjects(projects.filter(p=>p.tags.includes(tag))); }
 
